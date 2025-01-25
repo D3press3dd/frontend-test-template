@@ -1,7 +1,21 @@
-export default async function Home() {
+import CatalogSkeleton from '@/components/molecules/catalog-skeleton'
+import CatalogContent from '@/components/pages/catalog-content'
+import { Suspense } from 'react'
+
+interface PageProps {
+  searchParams: Record<string, string | string[] | undefined>
+}
+
+export default function CatalogPage ({ searchParams }: PageProps) {
+  const contentKey = `${searchParams.genre || ''}-${searchParams.page || '1'}`
+
+  if (!searchParams.genre && !searchParams.page) { return <CatalogContent searchParams={searchParams} /> }
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24 font-bold text-4xl text-blue-600'>
-      Hello, world!
+    <main>
+      <Suspense key={contentKey} fallback={<CatalogSkeleton />}>
+        <CatalogContent searchParams={searchParams} />
+      </Suspense>
     </main>
   )
 }
