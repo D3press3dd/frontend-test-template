@@ -10,7 +10,7 @@ interface SeeMoreBtnProps {
 export default function SeeMoreBtn ({ className }: SeeMoreBtnProps) {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const currentPage = parseInt(searchParams.get('page') || '1')
+  const currentPage = parseInt(searchParams.get('page') ?? '1')
 
   const handleLoadMore = () => {
     const params = new URLSearchParams(searchParams.toString())

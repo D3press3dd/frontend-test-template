@@ -7,7 +7,7 @@ export default function GenreSelect () {
   const { genres } = useGenreContext()
   const router = useRouter()
   const searchParams = useSearchParams()
-  const currentGenre = searchParams.get('genre') || ''
+  const currentGenre = searchParams.get('genre') ?? ''
 
   const handleGenreChange = (newGenre: string) => {
     const params = new URLSearchParams(searchParams)
