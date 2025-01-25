@@ -4,11 +4,11 @@ import CartItem from '@/components/molecules/cart-item'
 import cx from 'classnames'
 import { useCart } from '@/contexts/cart-context'
 
-interface CartItemsList {
+interface CartItemsListProps {
   className?: string
 }
 
-export default function CartItemsList ({ className }: CartItemsList) {
+export default function CartItemsList ({ className }: CartItemsListProps) {
   const { items, removeItem } = useCart()
   return (
     <div className={className}>

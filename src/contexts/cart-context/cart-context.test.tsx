@@ -34,7 +34,7 @@ describe('CartProvider and useCart', () => {
     })
 
     expect(result.current.items).toEqual([mockGame])
-    const savedCart = JSON.parse(localStorage?.getItem('cart') || '[]')
+    const savedCart = JSON.parse(localStorage?.getItem('cart') ?? '[]')
     expect(savedCart).toEqual([mockGame])
   })
 
@@ -49,7 +49,7 @@ describe('CartProvider and useCart', () => {
     })
 
     expect(result.current.items).toEqual([])
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]')
+    const savedCart = JSON.parse(localStorage.getItem('cart') ?? '[]')
     expect(savedCart).toEqual([])
   })
 
@@ -97,14 +97,14 @@ describe('CartProvider and useCart', () => {
       result.current.addItem(mockGame)
     })
 
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]')
+    const savedCart = JSON.parse(localStorage.getItem('cart') ?? '[]')
     expect(savedCart).toEqual([mockGame])
 
     await act(async () => {
       result.current.removeItem(mockGame.id)
     })
 
-    const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]')
+    const updatedCart = JSON.parse(localStorage.getItem('cart') ?? '[]')
     expect(updatedCart).toEqual([])
   })
 })

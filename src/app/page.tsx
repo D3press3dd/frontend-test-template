@@ -7,7 +7,7 @@ interface PageProps {
 }
 
 export default function CatalogPage ({ searchParams }: PageProps) {
-  const contentKey = `${searchParams.genre || ''}-${searchParams.page || '1'}`
+  const contentKey = `${searchParams.genre ?? ''}-${searchParams.page ?? '1'}`
 
   if (!searchParams.genre && !searchParams.page) { return <CatalogContent searchParams={searchParams} /> }
 
